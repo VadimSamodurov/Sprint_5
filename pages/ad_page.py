@@ -31,12 +31,12 @@ class AdPage(BasePage):
 
     def select_category(self, category_text):
         self.click_element(self.ad_locators.CATEGORY_DROPDOWN_ARROW)
-        option_locator = ('xpath', f'//span[contains(text(), "{category_text}")]/ancestor::button[contains(@class, "dropDownMenu_btn__o8ARs")]')
+        option_locator = (self.ad_locators.CATEGORY_OPTION[0], self.ad_locators.CATEGORY_OPTION[1].format(category_text))
         self.click_element(option_locator)
 
     def select_city(self, city_text):
         self.click_element(self.ad_locators.CITY_DROPDOWN_ARROW)
-        option_locator = ('xpath', f'//span[contains(text(), "{city_text}")]/ancestor::button[contains(@class, "dropDownMenu_btn__o8ARs")]')
+        option_locator = (self.ad_locators.CITY_OPTION[0], self.ad_locators.CITY_OPTION[1].format(city_text))
         self.click_element(option_locator)
 
     def click_publish(self):

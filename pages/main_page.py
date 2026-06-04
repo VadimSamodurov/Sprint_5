@@ -30,3 +30,6 @@ class MainPage(BasePage):
 
     def is_logout_button_visible(self):
         return self.is_element_present(self.base_locators.BTN_LOGOUT)
+
+    def open_profile(self):
+        self.click_element(self.base_locators.BTN_PROFILE)

@@ -12,10 +12,10 @@ class AdLocators:
     AD_PRICE = ('css selector', 'input[placeholder="Стоимость"][name="price"]')
 
     CATEGORY_DROPDOWN_ARROW = ('css selector', 'input[name="category"] ~ .dropDownMenu_arrowDown__pfGL1')
-    CATEGORY_OPTION = ('xpath', '//button[@class="dropDownMenu_btn__o8ARs dropDownMenu_noDefault__wSKsP"]/span[contains(text(), "{}")]/ancestor::button')
+    CATEGORY_OPTION = ('xpath', '//button[@class="dropDownMenu_btn__o8ARs dropDownMenu_noDefault__wSKsP" and .//span[contains(text(), "{}")]]')
 
     CITY_DROPDOWN_ARROW = ('css selector', 'input[name="city"] ~ .dropDownMenu_arrowDown__pfGL1')
-    CITY_OPTION = ('xpath', '//button[@class="dropDownMenu_btn__o8ARs dropDownMenu_noDefault__wSKsP"]/span[contains(text(), "{}")]/ancestor::button')
+    CITY_OPTION = ('xpath', '//button[@class="dropDownMenu_btn__o8ARs dropDownMenu_noDefault__wSKsP" and .//span[contains(text(), "{}")]]')
 
     CONDITION_NEW = ('xpath', '//input[@name="condition" and @value="Новый"]')
     CONDITION_USED_LABEL = ('xpath', '//input[@name="condition" and @value="Б/У"]/following-sibling::label[@class="h2"]')

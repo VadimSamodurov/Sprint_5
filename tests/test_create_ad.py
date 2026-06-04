@@ -33,5 +33,24 @@ class TestCreateAd:
         auth_page.fill_registration_form(test_email, test_password)
 
         main_page = MainPage(driver)
-
+        assert main_page.is_user_avatar_visible(), "Пользователь не авторизован"
         main_page.click_post_ad_button()
+
+        ad_page = AdPage(driver)
+        assert ad_page.is_ad_form_present(), "Форма создания объявления не отображается"
+
+        ad_title = fake.word()
+        ad_description = fake.sentence()
+        ad_price = fake.random_int(min=100, max=10000)
+        ad_category = "Хобби"
+        ad_city = "Москва"
+
+        ad_page.fill_ad_form(ad_title, ad_description, ad_price, ad_category, ad_city)
+        ad_page.click_publish()
+
+        import time
+        time.sleep(2)
+        main_page.open_profile()
+        profile_page = ProfilePage(driver)
+        assert profile_page.is_my_ads_section_visible(), "Секция 'Мои объявления' не отображается"
+        assert profile_page.is_ad_created(ad_title), f"Объявление '{ad_title}' не найдено в профиле"
